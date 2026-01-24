@@ -35,6 +35,12 @@ public class HomePage {
     @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/androidx.appcompat.widget.LinearLayoutCompat/android.widget.CheckedTextView")
     private List<WebElement> menuItems;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Beauty & Hygiene']")
+    private WebElement beautyAndHygiene;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='250 ml']")
+    private WebElement buttonText;
+
 
     public void clickExploreButton() {
         exploreNowButton.click();
@@ -64,6 +70,15 @@ public class HomePage {
             System.out.println("Menu Item: " + item.getText());
         }
     }
+
+    public void selectBeautyAndHygiene() {
+        beautyAndHygiene.click();
+    }
+
+    public void selectbuttonText() {
+        buttonText.click();
+    }
+
 
 
 
