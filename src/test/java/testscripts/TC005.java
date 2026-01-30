@@ -16,7 +16,8 @@ public class TC005 extends BaseTest {
         hp.openHamburgerMenu();
         hp.selectMenuItem("Shop By Category");
         hp.selectBeautyAndHygiene();
-        hp.selectbuttonText();
+        hp.selectDettol();
+        hp.select250ml();
 
     }
 }

@@ -2,11 +2,15 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -38,8 +42,8 @@ public class HomePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Beauty & Hygiene']")
     private WebElement beautyAndHygiene;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='250 ml']")
-    private WebElement buttonText;
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'DETTOL')]")
+    private WebElement dettolElement;
 
 
     public void clickExploreButton() {
@@ -75,12 +79,20 @@ public class HomePage {
         beautyAndHygiene.click();
     }
 
-    public void selectbuttonText() {
-        buttonText.click();
+    public void selectDettol() {
+        dettolElement.click();
     }
 
-
-
+    public void select250ml() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                AndroidBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true))" +
+                                ".scrollIntoView(new UiSelector().textContains(\"250\"))"
+                )
+        ));
+        element.click();
+    }
 
 
 }
