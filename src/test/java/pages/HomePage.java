@@ -1,5 +1,6 @@
 package pages;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidBy;
@@ -86,7 +87,7 @@ public class HomePage {
     public void select250ml() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
-                AndroidBy.AndroidUIAutomator(
+                AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true))" +
                                 ".scrollIntoView(new UiSelector().textContains(\"250\"))"
                 )
@@ -96,3 +97,4 @@ public class HomePage {
 
 
 }
+
