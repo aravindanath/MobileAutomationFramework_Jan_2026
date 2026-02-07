@@ -31,6 +31,7 @@ public class BaseTest {
         capabilities.setCapability("appium:appPackage", "com.raincan.android.hybrid");
         capabilities.setCapability("appium:appActivity", "com.raincan.app.v2.splash.activity.SplashActivity");
         capabilities.setCapability("appium:newCommandTimeout", 50000);
+//        capabilities.setCapability("adbExecTimeout", 50000);
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/"), capabilities);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 

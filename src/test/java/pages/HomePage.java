@@ -6,10 +6,12 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.MobileGestures;
 
 import java.time.Duration;
 import java.util.List;
@@ -45,6 +47,15 @@ public class HomePage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'DETTOL')]")
     private WebElement dettolElement;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"1.3 L\")")
+    private WebElement selectSize;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"com.raincan.android.hybrid:id/packSizeViewContainer\").instance(1)")
+    private WebElement select250ml;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.raincan.android.hybrid:id/txtProductBrand\" and @text=\"VASELINE\"]")
+    private WebElement vaselineElement;
 
 
     public void clickExploreButton() {
@@ -84,16 +95,27 @@ public class HomePage {
         dettolElement.click();
     }
 
+//    public void select250ml() {
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+//                AppiumBy.androidUIAutomator(
+//                        "new UiScrollable(new UiSelector().scrollable(true))" +
+//                                ".scrollIntoView(new UiSelector().textContains(\"250\"))"
+//                )
+//        ));
+//        element.click();
+//    }
+
     public void select250ml() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.androidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true))" +
-                                ".scrollIntoView(new UiSelector().textContains(\"250\"))"
-                )
-        ));
-        element.click();
+        selectSize.click();
+        select250ml.click();
+
     }
+
+    public void verifyScrollToElement() {
+        MobileGestures.swipeAndClickElement(driver,vaselineElement );
+    }
+
 
 
 }
